@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple GST Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #555;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>GST Calculator</h2>
+
+    <label for="amount">Enter Amount:</label>
+    <input type="number" id="amount" placeholder="Enter amount here">
+
+    <label for="gst">GST Percentage:</label>
+    <input type="number" id="gst" placeholder="Enter GST percentage">
+
+    <button onclick="calculateGST()">Calculate GST</button>
+
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    function calculateGST() {
+        var amount = parseFloat(document.getElementById('amount').value);
+        var gst = parseFloat(document.getElementById('gst').value);
+
+        if (isNaN(amount) || isNaN(gst)) {
+            document.getElementById('result').innerHTML = "Please enter valid numbers.";
+            return;
+        }
+
+        var gstAmount = (amount * gst) / 100;
+        var totalAmount = amount + gstAmount;
+
+        document.getElementById('result').innerHTML = 
+            "GST Amount: ₹" + gstAmount.toFixed(2) + "<br>Total Amount: ₹" + totalAmount.toFixed(2);
+    }
+</script>
+
+</body>
+</html>
